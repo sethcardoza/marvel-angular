@@ -1,1 +1,19 @@
+<div class="container clearfix">
+    <nav class="main">
+        <ul>
+            <li><a routerLink="/characters">Characters</a></li>
+            <li><a routerLink="/comics">Comics</a></li>
+            <li><a routerLink="/creators">Creators</a></li>
+            <li><a routerLink="/events">Events</a></li>
+            <li><a routerLink="/series">Series</a></li>
+            <li><a routerLink="/stories">Stories</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <div ng-view class="view-frame"></div>
+    </div>
+</div>
+<footer>
+    <div class="attribution"><a href="http://marvel.com">Data provided by Marvel. &copy; 2017 MARVEL</a></div>
+</footer>
 <router-outlet></router-outlet>

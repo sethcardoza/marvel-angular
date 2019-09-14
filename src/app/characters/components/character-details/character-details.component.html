@@ -1,1 +1,6 @@
-<p>character-details works!</p>
+<div class="character-details" *ngIf="character.id != null">
+    <h1><a routerLink="/characters/{{character.id}}">{{character.name}}</a></h1>
+    <a *ngIf="character.thumbnail" routerLink="/characters/{{character.id}}"><img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="{{character.title}}"></a>
+    <p>{{character.description}}</p>
+</div>
+    

@@ -1,0 +1,6 @@
+<div class="comic-details" ngif="comic.id != null">
+    <h1><a routerLink="/comics/{{comic.id}}">{{comic.title}}</a></h1>
+    <a *ngIf="comic.thumbnail" routerLink="/comics/{{comic.id}}"><img src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" alt="{{comic.title}}"></a>
+    <p>{{comic.description}}</p>
+</div>
+    

@@ -3,13 +3,13 @@ import { MarvelService } from 'src/app/services/marvel.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-character-details',
-  templateUrl: './character-details.component.html',
-  styleUrls: ['./character-details.component.scss']
+  selector: 'app-comic-details',
+  templateUrl: './comic-details.component.html',
+  styleUrls: ['./comic-details.component.scss']
 })
-export class CharacterDetailsComponent implements OnInit {
+export class ComicDetailsComponent implements OnInit {
 
-  character: any;
+  comic: any;
   id = '';
 
   constructor(private marvelService: MarvelService, private route: ActivatedRoute) { }
@@ -18,9 +18,9 @@ export class CharacterDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap) => {
       this.id = paramMap.get('id');
 
-      this.marvelService.getItem('characters', this.id).subscribe((response: any) => {
+      this.marvelService.getItem('comics', this.id).subscribe((response: any) => {
         console.log(response);
-        this.character = response.data.results[0];
+        this.comic = response.data.results[0];
       });
     });
   }

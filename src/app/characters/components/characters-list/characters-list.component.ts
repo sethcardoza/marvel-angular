@@ -9,7 +9,7 @@ import { MarvelService } from '../../../services/marvel.service';
 
 export class CharactersListComponent implements OnInit {
 
-  characters;
+  characters: any;
 
   constructor(private marvelService: MarvelService) { }
 

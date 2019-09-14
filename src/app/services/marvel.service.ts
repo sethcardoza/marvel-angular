@@ -45,5 +45,14 @@ export class MarvelService implements OnInit {
     console.log(type);
     console.log(url);
     return this.http.get(url, {params});
-  };
+  }
+
+  getItem(type, id) {
+    let params;
+    let url = this.buildUrl(type + '/' + id);
+
+    params = this.getParams({});
+
+    return this.http.get(url, {params});
+  }
 }
