@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MarvelService } from 'src/app/services/marvel.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-story-details',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoryDetailsComponent implements OnInit {
 
-  constructor() { }
+  story: any;
+  id = '';
+
+  constructor(private marvelService: MarvelService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((paramMap) => {
+      this.id = paramMap.get('id');
+
+      this.marvelService.getItem('stories', this.id).subscribe((response: any) => {
+        console.log(response);
+        this.story = response.data.results[0];
+      });
+    });
   }
 
 }

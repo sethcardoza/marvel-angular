@@ -1,1 +1,10 @@
-<p>event-details works!</p>
+<div class="event-details" *ngIf="event.id != null">
+    <h1><a routerLink="/events/{{event.id}}">{{event.title}}</a></h1>
+    <a *ngIf="event.thumbnail" routerLink="/events/{{event.id}}"><img src="{{event.thumbnail.path}}.{{event.thumbnail.extension}}" alt="{{event.title}}"></a>
+    <p>{{event.description}}</p>
+    <p class="run">
+        <span class="start">{{event.start | date : 'longDate'}}</span> -
+        <span class="end">{{event.end | date : 'longDate'}}</span>
+    </p>
+</div>
+    

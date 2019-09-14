@@ -1,1 +1,6 @@
-<p>story-details works!</p>
+<div class="story-details" *ngIf="story.id != null">
+    <h1><a routerLink="/stories/{{story.id}}">{{story.title}}</a></h1>
+    <a *ngIf="story.thumbnail" routerLink="/stories/{{story.id}}"><img src="{{story.thumbnail.path}}.{{story.thumbnail.extension}}" alt="{{story.title}}"></a>
+    <p>{{story.description}}</p>
+</div>
+    

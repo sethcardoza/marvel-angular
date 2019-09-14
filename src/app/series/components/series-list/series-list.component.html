@@ -1,1 +1,7 @@
-<p>series-list works!</p>
+<h1>Series</h1>
+<ul class="series list">
+    <li class="series-item" *ngFor="let item of series">
+        <a *ngIf="item.thumbnail" routerLink="/series/{{item.id}}"><img src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}" alt="{{item.title}}"></a>
+        <h3><a routerLink="/item/{{item.id}}">{{item.title}}</a></h3>
+    </li>
+</ul>

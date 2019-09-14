@@ -1,1 +1,10 @@
-<p>series-details works!</p>
+<div class="series-details" *ngIf="series.id != null">
+    <h1><a routerLink="/series/{{series.id}}">{{series.title}}</a></h1>
+    <a *ngIf="series.thumbnail" routerLink="/series/{{series.id}}"><img src="{{series.thumbnail.path}}.{{series.thumbnail.extension}}" alt="{{series.title}}"></a>
+    <p>{{series.description}}</p>
+    <p class="run">
+        <span class="start">{{series.startYear}}</span> -
+        <span class="end">{{series.endYear}}</span>
+    </p>
+</div>
+    

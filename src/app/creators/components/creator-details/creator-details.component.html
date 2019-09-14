@@ -1,1 +1,6 @@
-<p>creator-details works!</p>
+<div class="creator-details" *ngIf="creator.id != null">
+    <h1><a routerLink="/creators/{{creator.id}}">{{creator.fullName}}</a></h1>
+    <a *ngIf="creator.thumbnail" routerLink="/creators/{{creator.id}}"><img *ngIf="creator.thumbnail" src="{{creator.thumbnail.path}}.{{creator.thumbnail.extension}}" alt="{{creator.title}}"></a>
+    <p>{{creator.description}}</p>
+</div>
+    

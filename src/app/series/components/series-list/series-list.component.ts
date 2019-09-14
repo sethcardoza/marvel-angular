@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MarvelService } from 'src/app/services/marvel.service';
 
 @Component({
   selector: 'app-series-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeriesListComponent implements OnInit {
 
-  constructor() { }
+  series: any;
+
+  constructor(private marvelService: MarvelService) { }
 
   ngOnInit() {
+    this.marvelService.getList('series', {}).subscribe((response: any) => {
+      console.log(response);
+      this.series = response.data.results;
+    });
   }
 
 }

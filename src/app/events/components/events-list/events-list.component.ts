@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MarvelService } from 'src/app/services/marvel.service';
 
 @Component({
   selector: 'app-events-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsListComponent implements OnInit {
 
-  constructor() { }
+  events: any;
+
+  constructor(private marvelService: MarvelService) { }
 
   ngOnInit() {
+    this.marvelService.getList('events', {}).subscribe((response: any) => {
+      console.log(response);
+      this.events = response.data.results;
+    });
   }
 
 }
