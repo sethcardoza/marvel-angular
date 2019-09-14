@@ -1,27 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CharactersComponent } from './components/characters/characters.component';
-import { ComicsComponent } from './components/comics/comics.component';
-import { CreatorsComponent } from './components/creators/creators.component';
-import { EventsComponent } from './components/events/events.component';
-import { SeriesComponent } from './components/series/series.component';
-import { StoriesComponent } from './components/stories/stories.component';
+import { CharactersListComponent } from './characters/components/characters-list/characters-list.component';
+import { CharacterDetailsComponent } from './characters/components/character-details/character-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CharactersComponent,
-    ComicsComponent,
-    CreatorsComponent,
-    EventsComponent,
-    SeriesComponent,
-    StoriesComponent
+    CharactersListComponent,
+    CharacterDetailsComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
