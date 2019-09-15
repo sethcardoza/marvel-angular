@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MarvelService } from 'src/app/services/marvel.service';
+import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-characters-list',
@@ -9,15 +10,28 @@ import { MarvelService } from 'src/app/services/marvel.service';
 
 export class CharactersListComponent implements OnInit {
 
-  characters: any;
+  characters = [];
+  offset = 0;
+  busy = false;
 
   constructor(private marvelService: MarvelService) { }
 
   ngOnInit() {
-    this.marvelService.getList('characters', {}).subscribe((response: any) => {
-      console.log(response);
-      this.characters = response.data.results;
-    });
+    this.loadMore();
   }
 
+  loadMore() {
+    const params = {
+      offset: this.offset
+    };
+    if (!this.busy) {
+      this.busy = true;
+      this.marvelService.getList('characters', params).subscribe((response: any) => {
+        console.log(response);
+        this.characters = this.characters.concat(response.data.results);
+        this.offset += response.data.count;
+        this.busy = false;
+      });
+    }
+  }
 }
