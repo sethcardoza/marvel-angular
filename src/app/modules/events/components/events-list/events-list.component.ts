@@ -8,15 +8,29 @@ import { MarvelService } from 'src/app/services/marvel.service';
 })
 export class EventsListComponent implements OnInit {
 
-  events: any;
+  events = [];
+  offset = 0;
+  busy = false;
 
   constructor(private marvelService: MarvelService) { }
 
   ngOnInit() {
-    this.marvelService.getList('events', {}).subscribe((response: any) => {
-      console.log(response);
-      this.events = response.data.results;
-    });
+    this.loadMore();
+  }
+
+  loadMore() {
+    const params = {
+      offset: this.offset
+    };
+    if (!this.busy) {
+      this.busy = true;
+      this.marvelService.getList('events', params).subscribe((response: any) => {
+        console.log(response);
+        this.events = this.events.concat(response.data.results);
+        this.offset += response.data.count;
+        this.busy = false;
+      });
+    }
   }
 
 }

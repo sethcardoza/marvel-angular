@@ -7,16 +7,30 @@ import { MarvelService } from 'src/app/services/marvel.service';
   styleUrls: ['./creators-list.component.scss']
 })
 export class CreatorsListComponent implements OnInit {
-  
-  creators: any;
+
+  creators = [];
+  offset = 0;
+  busy = false;
 
   constructor(private marvelService: MarvelService) { }
 
   ngOnInit() {
-    this.marvelService.getList('creators', {}).subscribe((response: any) => {
-      console.log(response);
-      this.creators = response.data.results;
-    });
+    this.loadMore();
+  }
+
+  loadMore() {
+    const params = {
+      offset: this.offset
+    };
+    if (!this.busy) {
+      this.busy = true;
+      this.marvelService.getList('creators', params).subscribe((response: any) => {
+        console.log(response);
+        this.creators = this.creators.concat(response.data.results);
+        this.offset += response.data.count;
+        this.busy = false;
+      });
+    }
   }
 
 }

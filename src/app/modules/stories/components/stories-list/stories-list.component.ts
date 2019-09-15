@@ -8,15 +8,29 @@ import { MarvelService } from 'src/app/services/marvel.service';
 })
 export class StoriesListComponent implements OnInit {
 
-  stories: any;
+  stories = [];
+  offset = 0;
+  busy = false;
 
   constructor(private marvelService: MarvelService) { }
 
   ngOnInit() {
-    this.marvelService.getList('stories', {}).subscribe((response: any) => {
-      console.log(response);
-      this.stories = response.data.results;
-    });
+    this.loadMore();
+  }
+
+  loadMore() {
+    const params = {
+      offset: this.offset
+    };
+    if (!this.busy) {
+      this.busy = true;
+      this.marvelService.getList('stories', params).subscribe((response: any) => {
+        console.log(response);
+        this.stories = this.stories.concat(response.data.results);
+        this.offset += response.data.count;
+        this.busy = false;
+      });
+    }
   }
 
 }

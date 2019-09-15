@@ -1,5 +1,5 @@
 <h1>Stories</h1>
-<ul class="stories list">
+<ul class="stories list" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="loadMore()">
     <li class="story-item" *ngFor="let story of stories">
         <a *ngIf="story.thumbnail" routerLink="/stories/{{story.id}}"><img src="{{story.thumbnail.path}}.{{story.thumbnail.extension}}" alt="{{story.title}}"></a>
         <h3><a routerLink="/stories/{{story.id}}">{{story.title}}</a></h3>

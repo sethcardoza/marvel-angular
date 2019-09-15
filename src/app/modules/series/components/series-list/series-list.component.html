@@ -1,5 +1,5 @@
 <h1>Series</h1>
-<ul class="series list">
+<ul class="series list" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="loadMore()">
     <li class="series-item" *ngFor="let item of series">
         <a *ngIf="item.thumbnail" routerLink="/series/{{item.id}}"><img src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}" alt="{{item.title}}"></a>
         <h3><a routerLink="/series/{{item.id}}">{{item.title}}</a></h3>

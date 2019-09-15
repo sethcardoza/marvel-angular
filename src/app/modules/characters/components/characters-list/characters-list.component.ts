@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MarvelService } from 'src/app/services/marvel.service';
-import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-characters-list',

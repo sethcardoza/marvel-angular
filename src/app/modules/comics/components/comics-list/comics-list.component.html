@@ -1,5 +1,5 @@
 <h1>Comics</h1>
-<ul class="comics list">
+<ul class="comics list" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="loadMore()">
     <li class="comic-item" *ngFor="let comic of comics">
         <a *ngIf="comic.thumbnail" routerLink="/comics/{{comic.id}}"><img src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" alt="{{comic.title}}"></a>
         <h3><a routerLink="/comics/{{comic.id}}">{{comic.title}}</a></h3>

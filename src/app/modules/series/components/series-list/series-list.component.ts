@@ -8,15 +8,29 @@ import { MarvelService } from 'src/app/services/marvel.service';
 })
 export class SeriesListComponent implements OnInit {
 
-  series: any;
+  series = [];
+  offset = 0;
+  busy = false;
 
   constructor(private marvelService: MarvelService) { }
 
   ngOnInit() {
-    this.marvelService.getList('series', {}).subscribe((response: any) => {
-      console.log(response);
-      this.series = response.data.results;
-    });
+    this.loadMore();
+  }
+
+  loadMore() {
+    const params = {
+      offset: this.offset
+    };
+    if (!this.busy) {
+      this.busy = true;
+      this.marvelService.getList('series', params).subscribe((response: any) => {
+        console.log(response);
+        this.series = this.series.concat(response.data.results);
+        this.offset += response.data.count;
+        this.busy = false;
+      });
+    }
   }
 
 }

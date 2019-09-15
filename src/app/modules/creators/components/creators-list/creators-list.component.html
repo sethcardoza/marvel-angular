@@ -1,5 +1,5 @@
 <h1>Creators</h1>
-<ul class="creators list">
+<ul class="creators list" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="loadMore()">
     <li class="creator-item" *ngFor="let creator of creators">
         <a *ngIf="creator.thumbnail" routerLink="/creators/{{creator.id}}"><img src="{{creator.thumbnail.path}}.{{creator.thumbnail.extension}}" alt="{{creator.title}}"></a>
         <h3><a routerLink="/creators/{{creator.id}}">{{creator.fullName}}</a></h3>
