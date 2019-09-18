@@ -1,4 +1,9 @@
 <h1>Characters</h1>
+<div class="list-options">
+    <label for="startsWith">
+        <input type="text" name="startsWith" id="startsWith" #startsWith placeholder="Filter" (keyup)="filter(startsWith)" />
+    </label>
+</div>
 <ul class="characters list" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="loadMore()">
 <li class="character-item" *ngFor="let character of characters">
         <a *ngIf="character.thumbnail" routerLink="/characters/{{character.id}}">

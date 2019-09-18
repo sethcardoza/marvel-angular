@@ -1,4 +1,9 @@
 <h1>Series</h1>
+<div class="list-options">
+    <label for="startsWith">
+        <input type="text" name="startsWith" id="startsWith" #startsWith placeholder="Filter" (keyup)="filter(startsWith)" />
+    </label>
+</div>
 <ul class="series list" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="loadMore()">
     <li class="series-item" *ngFor="let item of series">
         <a *ngIf="item.thumbnail" routerLink="/series/{{item.id}}"><img src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}" alt="{{item.title}}"></a>

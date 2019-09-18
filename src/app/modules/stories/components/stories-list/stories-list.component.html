@@ -1,4 +1,9 @@
 <h1>Stories</h1>
+<div class="list-options">
+    <label for="startsWith">
+        <input type="text" name="startsWith" id="startsWith" #startsWith placeholder="Filter" (keyup)="filter(startsWith)" />
+    </label>
+</div>
 <ul class="stories list" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="loadMore()">
     <li class="story-item" *ngFor="let story of stories">
         <a *ngIf="story.thumbnail" routerLink="/stories/{{story.id}}"><img src="{{story.thumbnail.path}}.{{story.thumbnail.extension}}" alt="{{story.title}}"></a>

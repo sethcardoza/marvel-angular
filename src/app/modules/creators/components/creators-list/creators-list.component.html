@@ -1,4 +1,9 @@
 <h1>Creators</h1>
+<div class="list-options">
+    <label for="startsWith">
+        <input type="text" name="startsWith" id="startsWith" #startsWith placeholder="Filter" (keyup)="filter(startsWith)" />
+    </label>
+</div>
 <ul class="creators list" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="loadMore()">
     <li class="creator-item" *ngFor="let creator of creators">
         <a *ngIf="creator.thumbnail" routerLink="/creators/{{creator.id}}"><img src="{{creator.thumbnail.path}}.{{creator.thumbnail.extension}}" alt="{{creator.title}}"></a>
