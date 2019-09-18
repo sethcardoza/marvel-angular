@@ -97,11 +97,16 @@ footer {
     font-size: 80%;
     font-weight: normal;
 }
-.belonging-to {
-    margin-left: 20px;
-}
-.attribution {
-    font-size: 80%;
-    margin-top: 25px;
-    text-align: center;
+footer {
+    padding: 10px 0;
+    
+    .belonging-to {
+        margin-left: 20px;
+    }
+    .attribution {
+        font-size: 80%;
+        margin-top: 25px;
+        text-align: center;
+    }
+    
 }
